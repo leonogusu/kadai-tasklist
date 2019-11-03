@@ -29,23 +29,25 @@ class TasksController < ApplicationController
     end
     
     def update
-        @task = Task.new(params[:id])
+        @task = Task.find(params[:id])
         
-        if @task.save
-            flash[:success] = 'タスクが正常に投稿されました'
+        if @task.update(task_params)
+            flash[:success] = 'タスクが正常に更新されました'
             redirect_to @task
         else
-            flash.now[:danger] = 'タスクが投稿されませんでした'
+            flash.now[:danger] = 'タスクが更新されませんでした'
             render :edit
         end
     end
     
-    def delete
+    def destroy
         @task = Task.find(params[:id])
         @task.destroy
         
         flash[:success] = 'Task は正常に削除されました'
         redirect_to tasks_url
+        
+        
     end
 
 end
