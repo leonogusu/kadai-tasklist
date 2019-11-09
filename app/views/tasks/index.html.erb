@@ -1,3 +1,6 @@
+
+  <h1 class="offset-sm-3">ログイン完了ユーザ: <%= current_user.name %></h1>
+
 <h1>タスク一覧</h1>
 
 <% if @tasks.any? %>
@@ -25,3 +28,4 @@
 <% end %>
 
 <%= link_to '新規タスクの投稿', new_task_path, class: "btn btn-primary" %>
+
